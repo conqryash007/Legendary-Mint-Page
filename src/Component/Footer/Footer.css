@@ -1,0 +1,19 @@
+@media only screen and (max-width: 600px) {
+  .footer-subs {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-text {
+    width: 90%;
+  }
+  .footer-main-div {
+    margin: auto;
+    text-align: center;
+  }
+  .footer {
+    justify-items: center;
+  }
+  .footer > * {
+    justify-items: center;
+  }
+}
