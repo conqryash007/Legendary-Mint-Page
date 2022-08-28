@@ -8,15 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MoralisProvider } from "react-moralis";
-import { CONFIG } from "./config";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <MoralisProvider
-    serverUrl={`${CONFIG.moralis_Server_URL}`}
-    appId={`${CONFIG.moralis_app_ID}`}
-    // serverUrl={`https://0xzjwzdbbkel.usemoralis.com:2053/server`}
-    // appId={`TyeNFHSscgGgPcO2e0oDxuzDWo72tLF80MboERhI`}
+    serverUrl={`https://snavu03jrcte.usemoralis.com:2053/server`}
+    appId={`rlJh20MP66AQeucpV6L2vZoyZgeVwtHir7n1v88e`}
   >
     <App />
   </MoralisProvider>

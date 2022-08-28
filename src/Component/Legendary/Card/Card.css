@@ -1,0 +1,44 @@
+.nftCardbg {
+  /* background-color: rgba(45, 31, 94, 0.644); */
+  margin: 7px;
+  padding-bottom: 10px;
+  background: rgb(124, 15, 196);
+  background: linear-gradient(
+    90deg,
+    rgba(124, 15, 196, 0.4) 0%,
+    rgba(89, 78, 157, 0.2) 46%,
+    rgba(166, 43, 177, 0.4) 100%
+  );
+}
+
+.nft-image {
+  border-radius: 5px;
+}
+.mainImg {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .nft-image {
+    width: 80%;
+    padding-top: 40px;
+  }
+  .nftCardbg {
+    display: flex;
+    align-items: center;
+    width: 60vw;
+  }
+  .preview-staked {
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+  }
+  .stk-tim-img {
+    padding: 0;
+    width: 60%;
+  }
+  .timer-container {
+    width: 40vw;
+  }
+}

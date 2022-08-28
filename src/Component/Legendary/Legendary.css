@@ -1,0 +1,23 @@
+.container-miniMoose {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+.modal-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.modal-box {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.minimoose-img {
+  width: 50px;
+  height: 60px;
+  margin: 20px;
+}
+.modal-background-evo {
+  background-color: rgba(92, 91, 91, 0.602);
+}
