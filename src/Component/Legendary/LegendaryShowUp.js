@@ -107,15 +107,12 @@ const LegendaryShowUp = () => {
       }
     });
 
-    console.log(copyUser);
-
     const newArray = userTokens.filter((curr) => {
       if (curr.tokenId !== tokenId && curr.tokenId !== second?.tokenId)
         return curr;
       else return null;
     });
 
-    console.log(newArray);
     setCopyUser(newArray);
 
     moodalCheck.checked = !moodalCheck.checked;
@@ -338,7 +335,7 @@ const LegendaryShowUp = () => {
                 <img
                   alt="hero alpha"
                   src={first?.image || Image3}
-                  className="  rounded-lg shadow-2xl moose-image"
+                  className="epic-image rounded-lg shadow-2xl moose-image"
                 />
               </Slide>
             </div>
@@ -362,7 +359,7 @@ const LegendaryShowUp = () => {
                 <img
                   alt="hero alpha"
                   src={second?.image || Image2}
-                  className="  rounded-lg shadow-2xl moose-image"
+                  className="epic-image rounded-lg shadow-2xl moose-image"
                 />
               </Slide>
             </div>

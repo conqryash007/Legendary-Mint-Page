@@ -1,3 +1,11 @@
+.epic-image {
+  display: block;
+  max-width: 300px;
+  max-height: 305px;
+  margin: initial;
+  height: auto;
+}
+
 .container-miniMoose {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
