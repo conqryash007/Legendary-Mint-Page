@@ -22,6 +22,7 @@ const LegendaryShowUp = () => {
   const [copyUser, setCopyUser] = useState(null);
   const [first, setFirst] = useState(null);
   const [second, setSecond] = useState(null);
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     const run = async () => {
@@ -179,6 +180,7 @@ const LegendaryShowUp = () => {
       };
 
       try {
+        setDisable(true);
         notifyInfo("Your Transaction has started");
 
         const mintTransaction = await Moralis.executeFunction(
@@ -217,6 +219,7 @@ const LegendaryShowUp = () => {
     } else {
       notifyError("Select 2 Epic Moose to proceed further");
     }
+    setDisable(false);
   };
 
   return (
@@ -417,6 +420,7 @@ const LegendaryShowUp = () => {
               </Slide>
             </div>
             <button
+              disabled={disable}
               onClick={mintEpicHeroMoose}
               className="dashboard px-12 py-3 font-semibold mt-5"
             >
