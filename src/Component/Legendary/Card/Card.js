@@ -6,7 +6,7 @@ const Card = (props) => {
     <div className="card card-compact w-48 bg-base-120 nftCardbg">
       <div className="card-body h-5">
         <p style={{ color: "white", fontSize: "14px", fontWeight: "bolder" }}>
-          {props ? "MiniMoose" : null}
+          {props ? "Super Moose" : null}
         </p>
         <p style={{ color: "magenta", fontSize: "15px", fontWeight: "100" }}>
           {props?.tokenId || props?.tokenId === 0

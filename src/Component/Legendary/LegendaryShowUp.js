@@ -415,7 +415,7 @@ const LegendaryShowUp = () => {
                 <img
                   alt="hero alpha"
                   src={Image}
-                  className="  rounded-lg shadow-2xl moose-image"
+                  className=" epic-image rounded-lg shadow-2xl moose-image"
                 />
               </Slide>
             </div>
