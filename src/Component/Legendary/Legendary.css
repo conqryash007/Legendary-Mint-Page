@@ -5,7 +5,11 @@
   margin: initial;
   height: auto;
 }
-
+.xxx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container-miniMoose {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

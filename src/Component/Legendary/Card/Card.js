@@ -9,7 +9,9 @@ const Card = (props) => {
           {props ? "MiniMoose" : null}
         </p>
         <p style={{ color: "magenta", fontSize: "15px", fontWeight: "100" }}>
-          {props?.tokenId ? `Token Id : ${props.tokenId}` : null}
+          {props?.tokenId || props?.tokenId === 0
+            ? `Token Id : ${props.tokenId}`
+            : null}
         </p>
       </div>
       <figure className="nft-image px-4 pt-10">

@@ -4,12 +4,13 @@ import Image from "./images/promo-1.webp";
 import Image2 from "./images/promo-2 (1).webp";
 import Image3 from "./images/promo-2.webp";
 
+import { data } from "./artifacts/finalMetadata";
 import Card from "./Card/Card";
 import { toast, ToastContainer } from "react-toastify";
 import { CONFIG } from "./../../config";
 import Web3 from "web3/dist/web3.min.js";
 import { useMoralis } from "react-moralis";
-import { SHMMABI } from "./artifacts.js/SuperheroMooseABI";
+import { SHMMABI } from "./artifacts/SuperheroMooseABI";
 import "./Legendary.css";
 
 const LegendaryShowUp = () => {
@@ -28,39 +29,65 @@ const LegendaryShowUp = () => {
         await Moralis.enableWeb3();
         new Web3(Moralis.provider);
 
-        const readOptions = {
-          contractAddress: CONFIG.smart_contract_superHeroMutantMoose,
-          functionName: "regularEpicPrice",
-          abi: SHMMABI,
-        };
-        let message = await Moralis.executeFunction(readOptions);
-        message = parseInt(message._hex, 16);
+        if (account) {
+          const readOptions = {
+            contractAddress: CONFIG.smart_contract_superHeroMutantMoose,
+            functionName: "balanceOf",
+            chain: CONFIG.chainID,
+            abi: SHMMABI,
+            params: {
+              owner: account,
+            },
+          };
+          let message = await Moralis.executeFunction(readOptions);
+          const count = parseInt(message._hex, 16);
 
-        // contract call to get user token ids
-        const userIds = [22, 45, 48, 67];
+          // contract call to get user token ids
+          const readOptions2 = {
+            contractAddress: CONFIG.smart_contract_superHeroMutantMoose,
+            functionName: "tokenOfOwnerByIndex",
+            chain: CONFIG.chainID,
+            abi: SHMMABI,
+            params: { owner: account, index: 0 },
+          };
 
-        const finalArr = [];
+          const promises = [];
+          for (let i = 0; i < count; i++) {
+            readOptions2.params.index = i;
+            promises.push(Moralis.executeFunction(readOptions2));
+          }
 
-        userIds.forEach((curr) => {
-          finalArr.push({
-            tokenId: curr,
-            image:
-              "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/70-batman.jpg",
+          let res = await Promise.all(promises);
+          res = res.map((curr) => {
+            return parseInt(curr._hex, 16);
           });
-        });
+          const userIds = res;
+          console.log(userIds);
 
-        setUserTokens(finalArr);
-        setCopyUser(finalArr);
+          const finalArr = [];
 
-        setLoaded(true);
+          userIds.forEach((curr) => {
+            if (curr < 626) {
+              finalArr.push({
+                tokenId: curr,
+                image: `https://ipfs.io/ipfs/QmQ2WgrbMFKLGWqXwnvmvKa1ALT7pwyUVp3M2LNoqCnRSY/${data.collection[curr].image}`,
+              });
+            }
+          });
+
+          setUserTokens(finalArr);
+          setCopyUser(finalArr);
+
+          setLoaded(true);
+        }
       } catch (err) {
+        console.log(err);
         console.log(err);
       }
     };
-    if (!isWeb3EnableLoading && !isWeb3Enabled) {
-      run();
-    }
-  }, [isWeb3EnableLoading, isWeb3Enabled]);
+
+    run();
+  }, [account]);
 
   // TOASTIFY REALTED FUNCTIONS
   const notifySuccess = (message) =>
@@ -249,9 +276,11 @@ const LegendaryShowUp = () => {
                 </>
               ) : (
                 <>
-                  <div className="buttonsmint flex justify-center py-4 container-empty-mini">
+                  <div className="xxx buttonsmint py-4 container-empty-mini">
                     <h1>Click Here To Mint A Epic Moose</h1>
+
                     <a
+                      style={{ display: "block" }}
                       href="https://epicmint.netlify.app/"
                       className="dashboard px-8 py-2 font-bold text-lg"
                     >
@@ -309,7 +338,7 @@ const LegendaryShowUp = () => {
                 </>
               ) : (
                 <>
-                  <div className="buttonsmint flex justify-center py-4 container-empty-mini">
+                  <div className="xxx buttonsmint flex justify-center py-4 container-empty-mini">
                     <h1>Click Here To Mint A Epic Moose</h1>
                     <a
                       href="https://epicmint.netlify.app/"
