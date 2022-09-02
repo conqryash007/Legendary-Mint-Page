@@ -404,7 +404,7 @@ const LegendaryShowUp = () => {
               htmlFor={"my-modal-62"}
               className="dashboard px-12 py-3 font-semibold mt-15"
             >
-              Choose 1st Epic
+              Choose 2nd Epic
             </label>
           </Bounce>
         </div>
