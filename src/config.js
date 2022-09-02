@@ -142,7 +142,7 @@ if (network === "mainnet") {
   moralis_contract_moosetrax = "0xd8f78c67A1314c3d3791908da3378dd1d1cC60EE";
   moralis_contract_heroboxserum = "0xAa4bDA7059D5732897dff429aAdfa89C4CbF2D3C";
   moralis_contract_superHeroMutantMoose =
-    "0x9C742549cD1908153aF4f3E2845eF8257FF5bc44";
+    "0x9deD5c3734C949176D1153B27C6FC32Ba9d5F448";
 
   // URI For Smart Collections
   SC_1_JSON_URI =
