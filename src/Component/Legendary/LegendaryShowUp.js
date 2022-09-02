@@ -166,7 +166,10 @@ const LegendaryShowUp = () => {
   };
 
   const mintEpicHeroMoose = async () => {
-    if (first?.tokenId && second?.tokenId) {
+    if (
+      (first?.tokenId || first?.tokenId === 0) &&
+      (second?.tokenId || second?.tokenId === 0)
+    ) {
       let optionMintEpicHeroMoose = {
         abi: SHMMABI,
         functionName: "getLegendaryFromEpic",

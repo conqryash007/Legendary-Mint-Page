@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bounce, Slide } from "react-reveal";
 import Header from "../Header/Header";
 import CountLegendary from "./CountLegendary";
 import LegendaryImage from "./images/2496-1536x1536.webp";
+import { useMoralis } from "react-moralis";
+import { CONFIG } from "./../../config";
+import { SHMMABI } from "./artifacts/SuperheroMooseABI";
+
 const Legendary = () => {
+  const { account, Moralis } = useMoralis();
+  const [burnedNum, setBurnedNum] = useState(null);
+  useEffect(() => {
+    const run = async () => {
+      // burned number
+      const readOptionsBurned = {
+        contractAddress: CONFIG.smart_contract_superHeroMutantMoose,
+        functionName: "getNextId",
+        chain: CONFIG.chainID,
+        abi: SHMMABI,
+        params: {
+          _type: 2,
+        },
+      };
+      let valBur = await Moralis.executeFunction(readOptionsBurned);
+      let burned = parseInt(valBur._hex, 16);
+
+      burned = (burned - 1251) * 2;
+      setBurnedNum(burned);
+    };
+    if (account) run();
+  }, [account]);
+
   return (
     <div className="bg">
       <Header></Header>
@@ -40,7 +67,7 @@ const Legendary = () => {
               <CountLegendary
                 Count1={626}
                 Count2={313}
-                Count3={0}
+                Count3={burnedNum}
               ></CountLegendary>
             </div>
           </div>
