@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Bounce, Slide } from "react-reveal";
 import Image from "./images/promo-1.webp";
-import Image2 from "./images/promo-2 (1).webp";
-import Image3 from "./images/promo-2.webp";
+import Image2 from "./images/black.png";
+import Image3 from "./images/black.png";
 
 import { data } from "./artifacts/finalMetadata";
 import Card from "./Card/Card";
@@ -244,6 +244,11 @@ const LegendaryShowUp = () => {
       <div className="modal modal-bottom sm:modal-middle modal-background-evo">
         <div className="modal-box">
           <h3 className="font-bold text-lg">SELECT YOUR EPIC MOOSE</h3>
+          {Object.keys(imgLoaded)?.length !== userTokens?.length ? (
+            <h4>Please allow the NFTs to load before selecting them.</h4>
+          ) : (
+            <></>
+          )}
           <label
             htmlFor="my-modal-6"
             className="btn btn-sm btn-circle absolute right-2 top-2"
